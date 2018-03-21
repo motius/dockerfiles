@@ -88,6 +88,26 @@ jobs:
             docker push motius/bareos-sd:17.2
             docker push motius/bareos-sd:latest
 
+  build-polr:
+    working_directory: /app
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build polr
+          command: |
+            cd polr
+            docker build -t motius/polr:2.2.0 .
+            docker tag motius/polr:2.2.0 motius/polr:latest
+      - run:
+          name: Push to hub
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push motius/polr:2.2.0
+            docker push motius/polr:latest
+
 workflows:
   version: 2
   nightly:
@@ -101,6 +121,7 @@ workflows:
     jobs:
       - build-nginx
       - build-bareos
+      - build-polr
       - build-nextcloud:
           requires:
             - build-nginx
