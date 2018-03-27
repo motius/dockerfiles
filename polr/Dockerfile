@@ -156,5 +156,6 @@ RUN NB_CORES=${BUILD_CORES-$(getconf _NPROCESSORS_CONF)} \
  && mkdir -p /nginx/logs /nginx/run /php/php-fpm.d /php/logs /php/run /php/session \
  && adduser -DH www-data
 
+COPY patches /
 EXPOSE 8888
 CMD ["run.sh"]
