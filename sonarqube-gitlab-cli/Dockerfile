@@ -1,6 +1,6 @@
 FROM debian:9-slim
 
-ENV SONARQUBE_VERSION=3.0.3.778 \
+ENV SONARQUBE_VERSION=3.1.0.1141 \
     FILE=sonar-scanner-cli \
     PLATFORM=linux \
     SONARQUBE_KEY=F1182E81C792928921DBCAB4CFCA4A29D26468DE \
@@ -29,7 +29,6 @@ RUN apt-get update \
 
 WORKDIR /build
 ADD entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
 
 LABEL description="A docker image for scanning the code quality with sonarqube cli" \
       nextcloud="Sonarqube CLI v${SONARQUBE_VERSION}" \

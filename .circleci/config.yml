@@ -26,20 +26,20 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Build nextcloud 13.0.1
+          name: Build nextcloud 13.0.2
           command: |
             cd nextcloud
-            docker build -t motius/nextcloud:13.0.1 -f Dockerfile.13.0 .
+            docker build -t motius/nextcloud:13.0.2 -f Dockerfile.13.0 .
       - run:
           name: Tag images
           command: |
-            docker tag motius/nextcloud:13.0.1 motius/nextcloud:latest
+            docker tag motius/nextcloud:13.0.2 motius/nextcloud:latest
       - run:
           name: Push to hub
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker push motius/nextcloud:latest
-            docker push motius/nextcloud:13.0.1
+            docker push motius/nextcloud:13.0.2
 
   build-bareos:
     working_directory: /app
