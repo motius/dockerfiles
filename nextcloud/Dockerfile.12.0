@@ -16,7 +16,6 @@ ENV UID=991 GID=991 \
 
 RUN apk -U upgrade \
  && apk add -t build-dependencies \
-    gnupg \
     tar \
     build-base \
     autoconf \
@@ -25,6 +24,7 @@ RUN apk -U upgrade \
     libtool \
     samba-dev \
  && apk add \
+    gnupg \
     libressl \
     ca-certificates \
     libsmbclient \
