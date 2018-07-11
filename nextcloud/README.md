@@ -87,13 +87,9 @@ Don't copy/paste without thinking! It is a model so you can see how to do it cor
 ```
 version: '3'
 
-networks:
-  default:
-    driver: bridge
-
 services:
   nextcloud:
-    image: motius/nextcloud:12
+    image: motius/nextcloud:13.0.4
     depends_on:
       - nextcloud-db           # If using MySQL
       - solr                   # If using Nextant
@@ -115,18 +111,20 @@ services:
       - "DB_PASSWORD=supersecretpassword"
       - "DB_HOST=nextcloud-db"
     volumes:
-      - /docker/nextcloud/data:/data
-      - /docker/nextcloud/config:/config
-      - /docker/nextcloud/apps:/apps2
-      - /docker/nextcloud/themes:/nextcloud/themes
+      - ./data:/data
+      - ./config:/config
+      - ./apps:/apps2
+      - ./themes:/nextcloud/themes
     networks:
       - nextcloud
+    ports:
+      - 80:8888
 
   # If using MySQL
   nextcloud-db:
     image: mariadb:10
     volumes:
-      - /docker/nextcloud/db:/var/lib/mysql
+      - ./db:/var/lib/mysql
     environment:
       - "MYSQL_ROOT_PASSWORD=supersecretpassword"
       - "MYSQL_DATABASE=nextcloud"
@@ -137,10 +135,10 @@ services:
 
   # If using Nextant
   solr:
-    image: solr:6-alpine
+    image: solr:alpine
     container_name: solr
     volumes:
-      - /docker/nextcloud/solr:/opt/solr/server/solr/mycores
+      - ./solr:/opt/solr/server/solr/mycores/nextant
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
@@ -153,12 +151,14 @@ services:
     image: redis:alpine
     container_name: redis
     volumes:
-      - /docker/nextcloud/redis:/data
+      - ./redis:/data
     networks:
       - nextcloud
 
 networks:
-  - nextcloud
+  nextcloud:
+  default:
+    driver: bridge
 ```
 
 You can update everything with `docker-compose pull` followed by `docker-compose up -d`.
