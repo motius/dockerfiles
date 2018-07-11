@@ -3,7 +3,7 @@
 
 **This image was made and maintained for Motius and we have no intention to make this official. Support won't be regular so if there's an update, or a fix, you can open a pull request. Any contribution is welcome, but please be aware I'm very busy currently. Before opening an issue, please check if there's already one related. Also please use Github instead of Docker Hub, otherwise I won't see your comments. Thanks.**
 
-![](https://img.shields.io/docker/pulls/motius/nextcloud.svg) ![](https://img.shields.io/github/commit-activity/y/motius/dockerfiles.svg) ![](https://img.shields.io/docker/automated/motius/nextcloud.svg) ![](https://img.shields.io/docker/build/motius/nextcloud.svg) ![](https://circleci.com/gh/motius/dockerfiles/tree/master.svg?style=shield)
+![](https://img.shields.io/docker/pulls/motius/nextcloud.svg) ![](https://img.shields.io/github/commit-activity/y/motius/dockerfiles.svg) ![](https://img.shields.io/docker/automated/motius/nextcloud.svg) ![](https://img.shields.io/docker/build/motius/nextcloud.svg)
 ### Features
 - Build every night to keep the container up to date
 - Based on Alpine Linux 3.7.
