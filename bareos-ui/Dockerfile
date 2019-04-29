@@ -1,12 +1,12 @@
-FROM centos:7.2.1511
+FROM centos:7.6.1810
 
-ENV REFRESHED_AT="2017-12-27" \
+ENV REFRESHED_AT="2019-4-29" \
   BAREOS_DIR_HOST="bareos-dir"
 
 # https://github.com/docker/hub-feedback/issues/461
 RUN yum -y install httpd || true ; yum clean all
 
-RUN curl -Ls http://download.bareos.org/bareos/release/17.2/CentOS_7/bareos.repo \
+RUN curl -Ls http://download.bareos.org/bareos/release/18.2/CentOS_7/bareos.repo \
     > /etc/yum.repos.d/bareos.repo \
   && yum -y install \
     bareos-webui \

@@ -1,6 +1,6 @@
-FROM centos:7.2.1511
+FROM centos:7.6.1810
 
-ENV REFRESHED_AT="2017-12-27" \
+ENV REFRESHED_AT="2019-4-29" \
     BAREOS_DIR_CONF_FILE=bareos-dir.conf \
     DB_HOST="postgres" \
     DB_NAME="bareos" \
@@ -9,7 +9,7 @@ ENV REFRESHED_AT="2017-12-27" \
     DB_PORT="5432" \
     BAREOS_DB_VERSION="2171"
 
-RUN curl -Ls http://download.bareos.org/bareos/release/17.2/CentOS_7/bareos.repo \
+RUN curl -Ls http://download.bareos.org/bareos/release/18.2/CentOS_7/bareos.repo \
     > /etc/yum.repos.d/bareos.repo \
   && yum -y install \
     git \
