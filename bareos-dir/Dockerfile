@@ -29,7 +29,8 @@ RUN curl -Ls http://download.bareos.org/bareos/release/18.2/CentOS_7/bareos.repo
     python-psycopg2 \
     openssl \
     mailx \
-  && yum clean all
+  && yum clean all \
+  && mkdir /var/run/bareos
 
 ADD rootfs /
 EXPOSE 9101
